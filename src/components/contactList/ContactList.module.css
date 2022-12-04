@@ -24,7 +24,7 @@
 
 .listItem {
   display: grid;
-  grid-template-columns: 2fr 1.5fr 0.5fr;
-  grid-gap: 1vw;
+  grid-template-columns: 1.5fr 1.5fr 0.5fr;
+  grid-gap: 0.5vw;
   margin-bottom: 5px;
 }
