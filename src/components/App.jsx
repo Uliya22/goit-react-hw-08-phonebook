@@ -5,6 +5,8 @@ import { selectContacts, selectIsLoading, selectError } from 'redux/selectors';
 import { ContactForm } from './contactForm/ContactForm';
 import { Filter } from './filter/Filter';
 import { ContactList } from './contactList/ContactList';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import css from './App.module.css';
 
 export const App = () => {
@@ -21,12 +23,22 @@ export const App = () => {
   return (
     <div className={css.wrapper}>
       <h1 className={css.title}>Phonebook</h1>
-      <ContactForm />
+      <>
+        <ContactForm />
+        <ToastContainer autoClose={3000} />
+      </>
+      <h2 className={css.listTitle}>Contacts</h2>
       {contactsLength > 1 && <Filter />}
       {isLoading && !error && (
         <span className={css.load}>Request in progress...</span>
       )}
-      {contactsLength > 0 && <ContactList />}
+      {contactsLength > 0 && !error ? (
+        <ContactList />
+      ) : (
+        <p className={css.emptyList}>
+          Your phonebook is empty. Please, аdd your first contact.
+        </p>
+      )}
     </div>
   );
 };

@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { selectContacts } from '../../redux/selectors';
 import { addContact } from 'redux/operations';
+import { toast } from 'react-toastify';
 import css from './ContactForm.module.css';
 
 export const ContactForm = () => {
@@ -40,9 +41,9 @@ export const ContactForm = () => {
     e.preventDefault();
 
     if (checkName(name)) {
-      alert(`${name} is already in contacts`);
+      toast.error(`${name} is already in contacts`);
     } else if (checkNumber(number)) {
-      alert(`${number} is already in your contacts!`);
+     toast.error(`${number} is already in your contacts!`);
     } else {
       dispatch(addContact({name, number}));
     }

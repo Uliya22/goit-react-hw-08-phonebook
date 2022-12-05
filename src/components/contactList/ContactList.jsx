@@ -17,7 +17,6 @@ export const ContactList = () => {
 
   return (
     <>
-      <h2 className={css.listTitle}>Contacts</h2>
       <div className={css.listContainer}>
         <ul className={css.phoneList}>
           {visibleContacts.map(contact => (
