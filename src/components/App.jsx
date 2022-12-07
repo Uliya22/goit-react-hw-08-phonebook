@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { fetchContacts } from 'redux/operations';
-import { selectContacts, selectIsLoading, selectError } from 'redux/selectors';
+import { fetchContacts } from 'redux/contacts/operations';
+import { selectContacts, selectIsLoading, selectError } from 'redux/contacts/selectors';
 import { ContactForm } from './contactForm/ContactForm';
 import { Filter } from './filter/Filter';
 import { ContactList } from './contactList/ContactList';
@@ -25,7 +25,7 @@ export const App = () => {
       <h1 className={css.title}>Phonebook</h1>
       <>
         <ContactForm />
-        <ToastContainer autoClose={3000} />
+        <ToastContainer theme="colored" autoClose={3000} />
       </>
       <h2 className={css.listTitle}>Contacts</h2>
       {contactsLength > 1 && <Filter />}

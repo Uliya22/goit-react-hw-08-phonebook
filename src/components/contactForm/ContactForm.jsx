@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { selectContacts } from '../../redux/selectors';
-import { addContact } from 'redux/operations';
+import { selectContacts } from '../../redux/contacts/selectors';
+import { addContact } from 'redux/contacts/operations';
 import { toast } from 'react-toastify';
 import css from './ContactForm.module.css';
 
@@ -41,9 +41,14 @@ export const ContactForm = () => {
     e.preventDefault();
 
     if (checkName(name)) {
-      toast.error(`${name} is already in contacts`);
+      toast.info(`${name} is already in contacts`, {
+        position: toast.POSITION.TOP_CENTER,
+      });
+  
     } else if (checkNumber(number)) {
-     toast.error(`${number} is already in your contacts!`);
+     toast.info(`${number} is already in your contacts!`, {
+       position: toast.POSITION.TOP_CENTER,
+     });
     } else {
       dispatch(addContact({name, number}));
     }
