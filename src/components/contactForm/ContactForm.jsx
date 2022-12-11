@@ -1,8 +1,8 @@
 import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { selectContacts } from '../../redux/contacts/selectors';
-import { addContact } from 'redux/contacts/operations';
-import { toast } from 'react-toastify';
+import { selectContacts } from 'redux/contacts/contactsSelectors';
+import { addContact } from 'redux/contacts/contactsOperations';
+import { Notify } from 'notiflix/build/notiflix-notify-aio';
 import css from './ContactForm.module.css';
 
 export const ContactForm = () => {
@@ -41,16 +41,31 @@ export const ContactForm = () => {
     e.preventDefault();
 
     if (checkName(name)) {
-      toast.info(`${name} is already in contacts`, {
-        position: toast.POSITION.TOP_CENTER,
+      Notify.info(`'${name}' is already in contacts`, {
+        width: '380px',
+        position: 'center-top',
+        borderRadius: '5px',
+        clickToClose: true,
+        timeout: 3000,
+        fontSize: '20px',
+        backgroundColor: '#b1ceef',
+        showOnlyTheLastOne: true,
       });
-  
-    } else if (checkNumber(number)) {
-     toast.info(`${number} is already in your contacts!`, {
-       position: toast.POSITION.TOP_CENTER,
-     });
-    } else {
-      dispatch(addContact({name, number}));
+    }
+    else if (checkNumber(number)) {
+      Notify.info(`${number} is already in your contacts!`, {
+        width: '380px',
+        position: 'center-top',
+        borderRadius: '5px',
+        clickToClose: true,
+        timeout: 3000,
+        fontSize: '20px',
+        background: '#b1ceef',
+        showOnlyTheLastOne: true,
+      });
+    }
+    else {
+      dispatch(addContact({ name, number }));
     }
 
     setName('');

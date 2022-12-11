@@ -1,0 +1,9 @@
+.container {
+  min-height: calc(100vh - 50px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-image: url(../../img/telephone_booth.jpg);
+  background-size: cover;
+  background-repeat: no-repeat;
+}

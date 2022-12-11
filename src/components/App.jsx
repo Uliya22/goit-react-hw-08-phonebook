@@ -1,44 +1,49 @@
+import { Route, Routes } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
 import { useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { fetchContacts } from 'redux/contacts/operations';
-import { selectContacts, selectIsLoading, selectError } from 'redux/contacts/selectors';
-import { ContactForm } from './contactForm/ContactForm';
-import { Filter } from './filter/Filter';
-import { ContactList } from './contactList/ContactList';
-import { ToastContainer } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
-import css from './App.module.css';
+import { HomePage } from 'pages/homePage/HomePage'; 
+import { ContactsPage } from 'pages/contactsPage/ContactsPage';
+import { LoginPage } from 'pages/loginPage/LoginPage';
+import { RegisterPage } from 'pages/registerPage/RegisterPage';
+import { refreshUser } from 'redux/auth/authOperations'; 
+import { PrivateRoute } from './PrivateRoute'; 
+import { RestrictedRoute } from './RestrictedRoute'; 
+import { AppBar } from './appBar/AppBar';
 
 export const App = () => {
   const dispatch = useDispatch();
-  const isLoading = useSelector(selectIsLoading);
-  const error = useSelector(selectError);
-  const contacts = useSelector(selectContacts);
-  const contactsLength = contacts.length;
-
+  
   useEffect(() => {
-    dispatch(fetchContacts());
+    dispatch(refreshUser());
   }, [dispatch]);
 
   return (
-    <div className={css.wrapper}>
-      <h1 className={css.title}>Phonebook</h1>
-      <>
-        <ContactForm />
-        <ToastContainer theme="colored" autoClose={3000} />
-      </>
-      <h2 className={css.listTitle}>Contacts</h2>
-      {contactsLength > 1 && <Filter />}
-      {isLoading && !error && (
-        <span className={css.load}>Request in progress...</span>
-      )}
-      {contactsLength > 0 && !error ? (
-        <ContactList />
-      ) : (
-        <p className={css.emptyList}>
-          Your phonebook is empty. Please, аdd your first contact.
-        </p>
-      )}
-    </div>
+    <>
+      <AppBar />
+      <Routes>
+        <Route index element={<HomePage />} />
+        <Route
+          path="/register"
+          element={
+            <RestrictedRoute
+              redirectTo="/contacts"
+              component={<RegisterPage />}
+            />
+          }
+        />
+        <Route
+          path="/login"
+          element={
+            <RestrictedRoute redirectTo="/contacts" component={<LoginPage />} />
+          }
+        />
+        <Route
+          path="/contacts"
+          element={
+            <PrivateRoute redirectTo="/login" component={<ContactsPage />} />
+          }
+        />
+      </Routes>
+    </>
   );
 };

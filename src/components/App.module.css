@@ -1,17 +1,9 @@
 .wrapper {
   padding-top: 20px;
   padding-bottom: 10px;
-  padding-left: 180px;
   min-height: 600px;
   background-size: cover;
   background-repeat: no-repeat;
-}
-
-.title {
-  margin: 20px 0;
-  font-size: 32px;
-  font-weight: 700;
-  color: white;
 }
 
 .load {
@@ -20,14 +12,7 @@
   color: white;
 }
 
-.listTitle {
-  margin: 20px 0;
-  font-size: 26px;
-  font-weight: 700;
-  color: white;
-}
-
-.emptyList {
+.blankSheet {
   font-size: 20px;
   font-weight: 400;
   color: white;

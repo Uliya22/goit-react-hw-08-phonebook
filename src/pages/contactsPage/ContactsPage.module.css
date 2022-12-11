@@ -1,0 +1,23 @@
+.container {
+  min-height: calc(100vh - 50px);
+  padding-top: 20px;
+  padding-left: 200px;
+  align-items: center;
+  justify-content: center;
+  background-image: url(../../img/telephone_booth.jpg);
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.title {
+  font-size: 40px;
+  font-weight: 500;
+  color: white;
+}
+
+.listTitle {
+  margin: 20px 0;
+  font-size: 32px;
+  font-weight: 500;
+  color: white;
+}

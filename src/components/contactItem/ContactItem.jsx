@@ -1,6 +1,6 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
-import { deleteContact } from 'redux/contacts/operations';
+import { deleteContact } from 'redux/contacts/contactsOperations'; 
 import PropTypes from 'prop-types';
 import css from './ContactItem.module.css';
 
@@ -21,6 +21,12 @@ export const ContactItem = ({ contact }) => {
     </>
   );
 };
+
 ContactItem.propTypes = {
-  contact: PropTypes.object.isRequired
- }
+  contact: PropTypes.exact({
+    createdAt: PropTypes.string.isRequired,
+    name: PropTypes.string.isRequired,
+    number: PropTypes.string.isRequired,
+    id: PropTypes.string.isRequired,
+  }),
+};

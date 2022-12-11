@@ -1,0 +1,25 @@
+.wrapper {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.username {
+  font-size: 20px;
+  font-weight: 500;
+  color: rgb(222, 6, 6);
+}
+
+.button {
+  margin-right: 50px;
+  background-color: #4f4f8c;
+  border: none;
+  font-family: Arial, sans-serif;
+  font-size: 24px;
+  font-weight: 500;
+  color: rgb(177, 206, 239);
+  margin-left: 50px;
+}
+.button:hover {
+  color: white;
+}
