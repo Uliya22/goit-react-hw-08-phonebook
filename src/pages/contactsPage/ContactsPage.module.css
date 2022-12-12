@@ -1,7 +1,7 @@
 .container {
   min-height: calc(100vh - 50px);
   padding-top: 20px;
-  padding-left: 200px;
+  padding-left: 15%;
   align-items: center;
   justify-content: center;
   background-image: url(../../img/telephone_booth.jpg);

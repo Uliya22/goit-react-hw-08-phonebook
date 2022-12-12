@@ -2,8 +2,14 @@
   min-height: calc(100vh - 50px);
   display: flex;
   align-items: center;
-  justify-content: center;
+  padding-left: 15%;
   background-image: url(../../img/telephone_booth.jpg);
   background-size: cover;
   background-repeat: no-repeat;
+}
+.title {
+  font-weight: 400;
+  font-size: 40px;
+  text-align: centr;
+  color: white;
 }

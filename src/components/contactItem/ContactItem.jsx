@@ -23,10 +23,5 @@ export const ContactItem = ({ contact }) => {
 };
 
 ContactItem.propTypes = {
-  contact: PropTypes.exact({
-    createdAt: PropTypes.string.isRequired,
-    name: PropTypes.string.isRequired,
-    number: PropTypes.string.isRequired,
-    id: PropTypes.string.isRequired,
-  }),
+  contact: PropTypes.object.isRequired
 };
