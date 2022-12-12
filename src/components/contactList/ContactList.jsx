@@ -5,8 +5,10 @@ import css from './ContactList.module.css';
 
 export const ContactList = () => {
   const getVisibleContacts = () => {
-    const normalizedFilter = FilterValue;
-    return contacts.filter(contact => contact.name.includes(normalizedFilter));
+    const normalizedFilter = FilterValue.toLowerCase();
+    return contacts.filter(contact =>
+      contact.name.toLowerCase().includes(normalizedFilter)
+    );
   };
 
   const contacts = useSelector(selectContacts);
